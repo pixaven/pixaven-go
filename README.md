@@ -90,8 +90,9 @@ func main() {
         panic(err)
     }
 
-    // Upload an image from disk, resize it to 100 x 75,
-    // automatically enhance, and adjust sharpness parameter.
+    // Provide a publicly available image URL with `fetch()` method,
+    // apply Gaussian blur using PNG as the output format.
+    // We'll also use `toFile()` method and stream the output image to disk
     meta, err := pix.
         Fetch("https://www.website.com/image.jpg").
         Filter(pixaven.P{
