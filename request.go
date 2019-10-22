@@ -22,6 +22,7 @@ type Request struct {
     location string
     context  context.Context
 
+    flip      P
     resize    P
     scale     P
     crop      P
@@ -57,6 +58,13 @@ type P map[string]interface{}
 // HTTPClient replaces the client used to execute the request.
 func (r *Request) HTTPClient(client *http.Client) *Request {
     r.http = client
+    return r
+}
+
+// Flip adds an image flipping step to the transformation flow.
+// Check out Pixaven docs for more details.
+func (r *Request) Flip(data P) *Request {
+    r.flip = data
     return r
 }
 
